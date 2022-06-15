@@ -20,17 +20,28 @@ public class MemberService {
     /* 회원가입 */
     public Long join(Member member) {
 
+//        long start = System.currentTimeMillis();
+
         // ctrl + alt + v: variable 추출하기
 //        Optional<Member> result = memberRepository.findByName(member.getName());
 //        result.ifPresent(m -> {
 //            throw new IllegalStateException("이미 존재하는 회원입니다.");
 //        });
-        
+
         // ctrl + alt + m: method 추출하기
         validateDuplicateMember(member); // 중복 회원 검증
 
         memberRepository.save(member);
         return member.getId();
+
+//        try{
+//
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish-start;
+//            System.out.println("join = "+timeMs+"ms");
+//        }
+
 
     }
 
